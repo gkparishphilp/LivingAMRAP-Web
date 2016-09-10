@@ -1,0 +1,21 @@
+%h1
+	Measurements
+
+
+%table.table
+	%thead
+		%th
+		%th
+		%th
+		%th
+	%tbody
+		- @measurements.each do |measurement|
+			%tr
+				%td
+					= link_to measurement.workout, measurement.workout
+				%td
+					= measurement.value
+				%td
+					= measurement.unit
+				%td
+					= measurement.recorded_at

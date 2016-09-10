@@ -1,0 +1,25 @@
+%h1
+	= pluralize @movements.count, 'Movement'
+.container
+	.row
+		%table.table
+			%thead
+				%th
+					Name
+				%th
+					AKA
+				%th
+					Equipment
+				%th
+					Workouts
+			%tbody
+				- @movements.each do |movement|
+					%tr
+						%td
+							= link_to movement.title, movement
+						%td
+							= movement.aliases.join( ', ' )
+						%td
+							= movement.equipment
+						%td
+							= movement.workouts.count

@@ -1,0 +1,69 @@
+I"“(function() {
+  var ready;
+
+  ready = $(function() {
+    var imageUploadToS3;
+    $('.editor-full').summernote({
+      height: 400
+    });
+    $('.editor-small').summernote({
+      toolbar: [['style', ['bold', 'italic', 'underline', 'clear']]]
+    });
+    imageUploadToS3 = JSON.parse($('#asset-upload-json').text());
+    imageUploadToS3['callback'] = function(url, key) {
+      console.log(url);
+      return console.log(key);
+    };
+    $('textarea.wysiwyg').each(function() {
+      var $this;
+      $this = $(this);
+      return $this.froalaEditor({
+        heightMin: $this.data('heightmin'),
+        linkInsertButtons: ['linkBack'],
+        linkList: false,
+        codeBeautifier: true,
+        linkMultipleStyles: false,
+        toolbarInline: false,
+        pastePlain: true,
+        charCounterCount: false,
+        placeholderText: $this.attr('placeholder'),
+        height: $this.data('height'),
+        toolbarSticky: true,
+        imageUploadToS3: imageUploadToS3
+      });
+    });
+    $('textarea.wysiwyg-inline').each(function() {
+      var $this;
+      $this = $(this);
+      return $this.froalaEditor({
+        heightMin: $this.data('heightmin'),
+        linkInsertButtons: ['linkBack'],
+        linkList: false,
+        codeBeautifier: true,
+        linkMultipleStyles: false,
+        toolbarInline: true,
+        pastePlain: true,
+        charCounterCount: false,
+        toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'emoticons', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
+        height: $this.data('height'),
+        placeholderText: $this.attr('placeholder'),
+        imageUploadToS3: imageUploadToS3
+      });
+    });
+    $('.datepicker').datetimepicker({
+      dateFormat: 'dd MM, yy'
+    });
+    if (!!$('#article_category_id').val()) {
+      $('#article_category_name').hide();
+    }
+    return $('#article_category_id').change(function() {
+      if (!!$(this).val()) {
+        return $('#article_category_name').hide();
+      } else {
+        return $('#article_category_name').show();
+      }
+    });
+  });
+
+}).call(this);
+:ET

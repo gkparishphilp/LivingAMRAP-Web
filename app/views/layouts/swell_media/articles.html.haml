@@ -1,0 +1,25 @@
+
+
+!!!strict
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+//[if gt IE 8] <html class="no-js">
+%html{ lang: :en }
+	%head
+		= render 'application/html_head', args: {}
+
+		= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+		= stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+		= stylesheet_link_tag "application", media: "all"
+	%body
+
+		= render 'application/flash'
+
+		= yield
+
+		= render 'application/footer'
+
+
+		= javascript_include_tag "application"
+		= javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'

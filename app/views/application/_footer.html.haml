@@ -1,0 +1,19 @@
+.container
+	.row
+		.col-xs-12
+			.home-footer
+				©
+				= Time.now.year
+				= ENV['APP_NAME']
+				%i.link-spacer
+				%a{ href: '/about' }
+					About
+				%i.link-spacer
+				%a{ href: '/blog' }
+					Blog
+				%i.link-spacer
+				%a{ href: '/contacts/new' }
+					Contact
+				%i.link-spacer
+				%a{ href: '/admin' }
+					Admin
