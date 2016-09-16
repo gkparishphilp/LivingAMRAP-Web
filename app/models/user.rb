@@ -8,6 +8,11 @@ class User < SwellMedia::User
 	validates 	:name, format: { with: /\A[a-zA-Z0-9_]{2,64}\z/ }, unless: :unregistered?
 
 	
+
+	has_many :measurements
+
+
+
   	# Plugins ---------------------
 
 	devise 		:database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :trackable, authentication_keys: [ :login ]

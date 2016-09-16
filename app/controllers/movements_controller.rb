@@ -2,6 +2,8 @@
 class MovementsController < ApplicationController
 	before_action :set_movement, only: [:show, :edit, :update, :destroy]
 
+	layout 'dash'
+	
 	def create
 		@movement = Movement.new( movement_params )
 		@movement.save 

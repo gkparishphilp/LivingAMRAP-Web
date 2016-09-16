@@ -8,22 +8,31 @@
 		= render 'application/html_head', args: {}
 
 		= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+
 		= stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+
+		= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
+
+		= stylesheet_link_tag 'cube'
+
 		= stylesheet_link_tag "application", media: "all"
 
 		= javascript_include_tag 'application'
 		
-		%script{ src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity: "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa",crossorigin: "anonymous" }
+		%script{ src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity: "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin: "anonymous" }
 		
-	%body
+	%body.theme-amethyst
+
 		= render 'application/analytics'
 		= render 'application/navbar'
 
-		.wrapper
-			= render 'application/breadcrumb_nav'
-			= render 'application/flash'
-			.container
-				= yield
+		= render 'application/flash'
+
+		.page-wrapper.container{ style: "margin-top: 50px;" }
+			.content-wrapper
+				.main-box.clearfix{ style: "margin: 12px;padding:24px;" }
+			
+					= yield
 
 
 		= render 'application/footer'

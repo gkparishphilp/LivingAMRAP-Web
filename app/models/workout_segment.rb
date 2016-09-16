@@ -1,8 +1,9 @@
 class WorkoutSegment < ActiveRecord::Base
 
+	before_save :initialize_fields
 	before_save :insert_seq
 	before_save :parse_content
-	before_save :set_types
+	
 
 	before_destroy :update_seqs_on_destroy
 
@@ -18,6 +19,16 @@ class WorkoutSegment < ActiveRecord::Base
 
 
 	private
+
+		def initialize_fields
+			if self.workout.workout_type.nil?
+				self.workout.update( workout_type: self.segment_type )
+			end 
+
+			self.to_record = 'time'
+			self.to_record = 'reps' if self.segment_type == 'amrap'
+			self.to_record = 'weight' if self.segment_type == 'strength'
+		end
 
 		def insert_seq
 			max_seq = self.workout.workout_segments.maximum( :seq )
@@ -93,15 +104,7 @@ class WorkoutSegment < ActiveRecord::Base
 		end
 
 
-		def set_types
-			if self.workout.workout_type.nil?
-				self.workout.update( workout_type: self.segment_type )
-			end 
-			self.to_record = 'reps' if self.segment_type == 'amrap'
-			self.to_record = 'time' if self.segment_type == 'rft'
-			self.to_record = 'weight' if self.segment_type == 'strength'
-			self.to_record = 'time' if self.segment_type == 'accumulate'
-		end
+		
 
 
 		def update_seqs_on_destroy

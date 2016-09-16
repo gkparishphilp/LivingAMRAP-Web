@@ -145,27 +145,6 @@ ActiveRecord::Schema.define(version: 20160822220712) do
   add_index "guest_sessions", ["traffic_src_user"], name: "index_guest_sessions_on_traffic_src_user", using: :btree
   add_index "guest_sessions", ["user_id"], name: "index_guest_sessions_on_user_id", using: :btree
 
-  create_table "measurements", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "metric_id"
-    t.integer  "workout_segment_id"
-    t.integer  "workout_id"
-    t.string   "measurement_type"
-    t.string   "title"
-    t.float    "value"
-    t.string   "unit"
-    t.string   "rx"
-    t.text     "notes"
-    t.datetime "started_at"
-    t.datetime "ended_at"
-    t.datetime "recorded_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "media", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "managed_by_id"
@@ -253,6 +232,25 @@ ActiveRecord::Schema.define(version: 20160822220712) do
   add_index "oauth_credentials", ["token"], name: "index_oauth_credentials_on_token", using: :btree
   add_index "oauth_credentials", ["uid"], name: "index_oauth_credentials_on_uid", using: :btree
   add_index "oauth_credentials", ["user_id"], name: "index_oauth_credentials_on_user_id", using: :btree
+
+  create_table "observations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "observed_id"
+    t.string   "observed_type"
+    t.string   "title"
+    t.float    "value"
+    t.string   "unit"
+    t.string   "rx"
+    t.text     "notes"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "recorded_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_events", force: :cascade do |t|
     t.integer  "user_id"
@@ -392,7 +390,7 @@ ActiveRecord::Schema.define(version: 20160822220712) do
     t.string   "to_record",          default: "time"
     t.integer  "duration"
     t.integer  "repeat_count",       default: 0
-    t.integer  "every_interval"
+    t.integer  "repeat_interval",    default: 60
     t.integer  "amrap_rep_interval", default: 0
     t.integer  "total_reps",         default: 0
     t.datetime "created_at"

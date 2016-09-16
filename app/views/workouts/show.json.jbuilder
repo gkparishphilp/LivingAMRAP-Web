@@ -15,5 +15,5 @@ json.segments @workout.workout_segments.each do |segment|
 	json.content segment.content
 	json.duration segment.duration
 	json.repeat_count segment.repeat_count
-	json.every_interval segment.every_interval
+	json.repeat_interval segment.repeat_interval
 end

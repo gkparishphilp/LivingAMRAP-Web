@@ -18,17 +18,15 @@
 	= f.hidden_field :workout_id, value: @workout.id
 	%table.table
 		%thead
-			%th
+			%th.col-xs-1
 				Seq
-			%th
+			%th.col-xs-2
 				Type
 			%th
 				Title
 			%th
 				Duration
 			
-			%th
-				Measure
 			%th
 				Reps
 			%th
@@ -44,7 +42,6 @@
 						- else
 							= "#{sprintf( '%02d', segment.duration / 60 )}:#{sprintf( '%02d', segment.duration % 60 )}"
 
-					%td= segment.to_measure
 					%td
 						= segment.total_reps
 					%td
@@ -54,13 +51,12 @@
 				%td
 					= f.text_field :seq, class: 'form-control'
 				%td
-					= f.select :segment_type, [ ['Work', 'work'], ['Rest', 'rest'] ], {}, class: 'form-control'
+					= f.select :segment_type, [ ['AMRAP', 'amrap'], ['For Time', 'ft'], ['Rounds for Time', 'rft'], ['EotM', 'emom'], ['TABATA', 'tabata'], ['Accumulate Time', 'accumulate'], ['Strength', 'strength'], ['Rest', 'rest'] ], {}, class: 'form-control'
 				%td
 					= f.text_field :content, class: 'form-control'
 				%td
 					= f.text_field :duration, class: 'form-control'
-				%td
-					= f.select :to_measure, [ ['Time', 'time'], ['Reps', 'reps'] ], {}, class: 'form-control'
+
 				%td
 				%td
 					= f.submit 'Add', class: 'btn btn-small btn-success'

@@ -1,0 +1,6 @@
+
+class ObservationsController < ApplicationController
+
+
+
+end

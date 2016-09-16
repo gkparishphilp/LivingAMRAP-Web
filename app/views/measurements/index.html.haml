@@ -1,21 +1,23 @@
-%h1
-	Measurements
 
-
-%table.table
-	%thead
-		%th
-		%th
-		%th
-		%th
-	%tbody
-		- @measurements.each do |measurement|
-			%tr
-				%td
-					= link_to measurement.workout, measurement.workout
-				%td
-					= measurement.value
-				%td
-					= measurement.unit
-				%td
-					= measurement.recorded_at
+.main-box.clearfix
+	.main-box-header.clearfix
+		%h2
+			Measurements
+	.main-box-body.clearfix
+		%table.table.table-striped
+			%thead
+				%th Workout
+				%th Value
+				%th Unit
+				%th Recorded
+			%tbody
+				- @measurements.each do |measurement|
+					%tr
+						%td
+							= link_to measurement.workout, measurement.workout
+						%td
+							= measurement.value
+						%td
+							= measurement.unit
+						%td
+							= measurement.recorded_at

@@ -3,6 +3,7 @@ ruby '2.2.3'
 
 source 'https://rubygems.org'
 
+gem 'chronic_duration'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

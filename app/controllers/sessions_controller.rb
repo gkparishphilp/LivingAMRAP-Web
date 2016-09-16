@@ -1,6 +1,6 @@
 class SessionsController < Devise::SessionsController
 	
-	layout 'application'
+	layout 'sessions'
 
 
 	def create

@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
 	before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
+	layout 'dash'
 	
 	def create
 		@workout = Workout.new( workout_params )

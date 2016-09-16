@@ -1,8 +1,10 @@
-%h1
-	= pluralize @movements.count, 'Movement'
-.container
-	.row
-		%table.table
+
+.main-box.clearfix
+	.main-box-header.clearfix
+		%h2
+			= pluralize @movements.count, 'Movement'
+	.main-box-body.clearfix
+		%table.table.table-striped
 			%thead
 				%th
 					Name

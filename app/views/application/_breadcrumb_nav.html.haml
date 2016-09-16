@@ -6,7 +6,7 @@
 					%li
 						%a{ href: '/' }
 							Home
-					- unless controller_name == 'static' or controller.action_name == 'index'
+					- unless controller_name == 'static' or controller_name == 'sessions' or controller.action_name == 'index'
 						%li
 							= link_to controller_name.capitalize, { controller: controller_name, action: :index }
 

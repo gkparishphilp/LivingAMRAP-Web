@@ -1,3 +1,6 @@
+puts "Adding Gk"
+u = User.create name: 'Gk', email: 'gk@gk.com', role: :admin, password: '1234'
+
 
 puts "Add some Metrics"
 ht = Metric.create title: 'Height', aliases: ['ht'], unit: 'in'
@@ -206,12 +209,25 @@ fran.workout_segments.create content: "21 15 9\r\nThrusters @ 95/65\r\nPullups",
 # fran.workout_movements.create movement: thruster, m_rx: '95 lbs'
 # fran.workout_movements.create movement: pullup
 
+glen = Workout.create title: 'Glen', cover_img: "http://www.crossfitnyc.com/wp-content/uploads/2013/12/glenincountry.jpg"
+glen.workout_segments.create content: "30 GTO @135lbs/95lbs", segment_type: 'ft', seq: 1
+glen.workout_segments.create content: "Run 1 mile", segment_type: 'ft', seq: 2
+glen.workout_segments.create content: "10 Rope Climbs", segment_type: 'ft', seq: 3
+glen.workout_segments.create content: "Run 1 mile", segment_type: 'ft', seq: 4
+glen.workout_segments.create content: "100 Burpees", segment_type: 'ft', seq: 5
+
 
 helen = Workout.create title: 'Helen', cover_img: "https://d1s2fu91rxnpt4.cloudfront.net/legacy/Helen1.jpg"
 helen.workout_segments.create content: "Run 400m\r\n21 kettlbell swings\r\n12 pullups", segment_type: :rft, repeat_count: 3
 # helen.workout_movements.create movement: run, m_rx: '400 meters'
 # helen.workout_movements.create movement: kbs, m_rx: '53 lbs'
 # helen.workout_movements.create movement: pullup
+
+emom = Workout.create title: 'Test EMOM'
+emom.workout_segments.create content: "1 high hang squat clean\r\n1 squat clean from above knee\r\n1 squat clean @ 2/3 body-weight", segment_type: :emom, repeat_count: 5, repeat_interval: 10
+
+emom = Workout.create title: 'Test Tabata'
+emom.workout_segments.create content: "DB bent rows", segment_type: :tabata, repeat_count: 8, repeat_interval: 30
 
 t1 = Workout.create title: 'Test Script AMRAP'
 t1.workout_segments.create content: "Do Something", segment_type: :amrap, duration: 10, seq: 1
@@ -231,6 +247,13 @@ t3 = Workout.create title: 'Test Script RFT Buy In'
 t3.workout_segments.create content: "100 Pullup Buy in", segment_type: :ft, seq: 1
 t3.workout_segments.create content: "Rest", segment_type: :rest, duration: 10, seq: 2
 t3.workout_segments.create content: "3 Rounds: \r\n 30 Squats\r\n30pushups\r\n30 DUs", segment_type: :rft, repeat_count: 3, seq: 3
+
+
+dt = Workout.create title: 'DT', cover_img: "http://www.snoridgecrossfit.com/typepad/6a0115705a348d970b01a3fceab052970b.jpg"
+dt.workout_segments.create content: "12 Deadlifts\r\n9 Hang Power Cleans\r\n6 Push Jerks", segment_type: :rft, repeat_count: 5
+dt.workout_movements.create movement: dl, m_rx: '155 lbs'
+dt.workout_movements.create movement: hpc, m_rx: '155 lbs'
+dt.workout_movements.create movement: pj, m_rx: '155 lbs'
 
 
 
@@ -270,11 +293,7 @@ t3.workout_segments.create content: "3 Rounds: \r\n 30 Squats\r\n30pushups\r\n30
 # badger.workout_movements.create movement: sqc, m_rx: '95 lbs'
 # badger.workout_movements.create movement: pullup
 
-# dt = Workout.create title: 'DT', workout_type: :rft, cover_img: "http://www.snoridgecrossfit.com/typepad/6a0115705a348d970b01a3fceab052970b.jpg"
-# dt.workout_segments.create content: "12 Deadlifts\r\n9 Hang Power Cleans\r\n6 Push Jerks", to_record: :time, repeat_count: 5
-# dt.workout_movements.create movement: dl, m_rx: '155 lbs'
-# dt.workout_movements.create movement: hpc, m_rx: '155 lbs'
-# dt.workout_movements.create movement: pj, m_rx: '155 lbs'
+
 
 # danny = Workout.create title: 'Danny', workout_type: :amrap
 # danny.workout_segments.create content: "30 Box Jumps\r\n20 Push Press\r\n30 Pull Ups", to_record: :reps, duration: 20*60

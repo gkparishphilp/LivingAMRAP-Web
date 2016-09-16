@@ -17,7 +17,7 @@ class Workout < ActiveRecord::Base
 		elsif self.workout_type == 'amrap'
 			return 'As Many Reps As Possible'
 		elsif self.workout_type == 'emom'
-			int = self.workout_segments.first.every_interval
+			int = self.workout_segments.first.repeat_interval / 60
 			min = int > 1 ? 'Minutes' : 'Minute'
 			return "Every #{int} #{min} on the Minute"
 		elsif self.workout_type == 'tabata'
@@ -40,7 +40,7 @@ class Workout < ActiveRecord::Base
 		elsif self.workout_type == 'amrap'
 			return "As Many Reps As Possible in\n #{self.workout_segments.first.formatted_duration} Minutes"
 		elsif self.workout_type == 'emom'
-			int = self.workout_segments.first.every_interval
+			int = self.workout_segments.first.repeat_interval / 60
 			min = int > 1 ? 'Minutes' : 'Minute'
 			return "Every #{int} #{min} on the Minute"
 		elsif self.workout_type == 'tabata'
