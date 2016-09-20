@@ -203,6 +203,10 @@ murph.workout_segments.create content: "run 1 mile", segment_type: :ft, seq: 5
 # murph.workout_movements.create movement: pushup, m_rx: '20lb vest', equipment_id: vest.id
 # murph.workout_movements.create movement: airsquat, m_rx: '20lb vest', equipment_id: vest.id
 
+murph = Workout.create title: 'Murph (Partitioned)', cover_img: 'http://crossfitlakeland.com/wp-content/uploads/2014/05/murph-wod4-630x630.jpg'
+murph.workout_segments.create content: "run 1 mile", segment_type: :ft, seq: 1
+murph.workout_segments.create content: "5 pullups\r\n10 push ups\r\n15 air squats", segment_type: :rft, seq: 2, repeat_count: 5 # 20
+murph.workout_segments.create content: "run 1 mile", segment_type: :ft, seq: 3
 
 fran = Workout.create title: 'Fran', cover_img: "https://cdn2.omidoo.com/sites/default/files/imagecache/full_width/images/bydate/201503/crossfitempirical142.jpg"
 fran.workout_segments.create content: "21 15 9\r\nThrusters @ 95/65\r\nPullups", segment_type: :ft
@@ -222,6 +226,10 @@ helen.workout_segments.create content: "Run 400m\r\n21 kettlbell swings\r\n12 pu
 # helen.workout_movements.create movement: run, m_rx: '400 meters'
 # helen.workout_movements.create movement: kbs, m_rx: '53 lbs'
 # helen.workout_movements.create movement: pullup
+
+accumulate = Workout.create title: 'Test Accumulate'
+accumulate.workout_segments.create content: "Plank Hold; accumulate 1 minute", segment_type: :accumulate, duration: 60
+
 
 emom = Workout.create title: 'Test EMOM'
 emom.workout_segments.create content: "1 high hang squat clean\r\n1 squat clean from above knee\r\n1 squat clean @ 2/3 body-weight", segment_type: :emom, repeat_count: 5, repeat_interval: 10

@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(version: 20160822220712) do
   add_index "oauth_credentials", ["user_id"], name: "index_oauth_credentials_on_user_id", using: :btree
 
   create_table "observations", force: :cascade do |t|
+    t.string   "tmp_id"
     t.integer  "user_id"
     t.integer  "parent_id"
     t.integer  "lft"
@@ -251,6 +252,8 @@ ActiveRecord::Schema.define(version: 20160822220712) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "observations", ["user_id", "tmp_id"], name: "index_observations_on_user_id_and_tmp_id", using: :btree
 
   create_table "user_events", force: :cascade do |t|
     t.integer  "user_id"

@@ -9,7 +9,7 @@ class User < SwellMedia::User
 
 	
 
-	has_many :measurements
+	has_many :observations
 
 
 

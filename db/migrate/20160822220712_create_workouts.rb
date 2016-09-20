@@ -61,6 +61,7 @@ class CreateWorkouts < ActiveRecord::Migration
 
 
 		create_table :observations do |t| 
+			t.string 		:tmp_id  			# for when observations are posted by the app
 			t.references 	:user
 			t.references 	:parent 			# nest segment results under parent workout result
 			t.integer 		:lft
@@ -76,6 +77,7 @@ class CreateWorkouts < ActiveRecord::Migration
 			t.datetime 		:recorded_at
 			t.timestamps 
 		end
+		add_index :observations, [:user_id, :tmp_id]
 
 
 		# just to keep track & query workouts based on movement e.g. which workouts prescribe situps?
