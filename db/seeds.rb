@@ -4,7 +4,7 @@ u = User.create name: 'Gk', email: 'gk@gk.com', role: :admin, password: '1234'
 
 puts "Add some Metrics"
 ht = Metric.create title: 'Height', aliases: ['ht'], unit: 'in'
-wt = Metric.create title: 'Weight', aliases: ['wt', 'lbs'], unit: 'lb'
+wt = Metric.create title: 'Weight', aliases: ['wt', 'lbs'], unit: 'lbs'
 wst = Metric.create title: 'Waist', aliases: ['wst'], unit: 'in'
 rhr = Metric.create title: 'Resting Heart Rate', aliases: ['pulse', 'heart-rate', 'rhr'], unit: 'bpm'
 systolic = Metric.create title: 'Systolic Blood Pressure', aliases: ['sbp', 'systolic'], unit: 'mm Hg'
@@ -187,7 +187,7 @@ uprow = Movement.create title: 'Curl', equipment_id: db.id, aliases: [ 'bicep', 
 # max_squat.workout_movements.create movement: bs, m_rx: '2 Rep Max', equipment_id: bb.id
 
 cindy = Workout.create title: 'Cindy', cover_img: "http://cooeecrossfit.com.au/wp-content/uploads/2013/05/WOD_Cindy.jpg"
-cindy.workout_segments.create content: "5 pullups\r\n10 push ups\r\n15 air squats", segment_type: :amrap, duration: 20*60
+cindy.workout_segments.create content: "5 pullups\r\n10 push ups\r\n15 air squats", segment_type: :amrap, duration: 20 # 20*60
 # cindy.workout_movements.create movement: pullup
 # cindy.workout_movements.create movement: pushup
 # cindy.workout_movements.create movement: airsquat
@@ -236,6 +236,10 @@ emom.workout_segments.create content: "1 high hang squat clean\r\n1 squat clean 
 
 emom = Workout.create title: 'Test Tabata'
 emom.workout_segments.create content: "DB bent rows", segment_type: :tabata, repeat_count: 8, repeat_interval: 30
+
+strength = Workout.create title: 'Test Strength'
+strength.workout_segments.create content: "Find 2RM DL", segment_type: :strength
+
 
 t1 = Workout.create title: 'Test Script AMRAP'
 t1.workout_segments.create content: "Do Something", segment_type: :amrap, duration: 10, seq: 1

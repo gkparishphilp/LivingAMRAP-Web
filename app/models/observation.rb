@@ -8,21 +8,23 @@ class Observation < ActiveRecord::Base
 	belongs_to 	:observed, polymorphic: true
 
 
-	def human_unit
-		if [ 'day', 'hr', 'hour', 'minute', 'min', 'sec', 'seconds', 'ms' ].include?( self.unit )
-			return 'time'
-		end
-	end
-
 	def human_value
-		if [ 'day', 'hr', 'hour', 'minute', 'min', 'sec', 'seconds' ].include?( self.unit )
+
+		if self.observed.try( :workout_type ) == 'amrap'
+			return "#{self.value.to_i} rds & #{self.sub_value.to_i} reps"
+
+		elsif self.observed.try( :workout_type ) == 'strength'
+			return "#{self.value.to_i}"
+			
+		elsif self.unit == 'secs'
 			ChronicDuration.output( self.value, format: :chrono )
-		elsif self.unit == 'ms'
-			seconds = ( self.value / 1000 ).round( 2 )
-			ChronicDuration.output( seconds, format: :chrono )
 		else
 			self.value
 		end
+	end
+
+	def to_s
+		return "#{self.human_value} #{self.unit}"
 	end
 
 

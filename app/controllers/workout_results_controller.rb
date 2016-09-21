@@ -16,11 +16,13 @@ class WorkoutResultsController < ApplicationController
 			rx: 			data['rx'],
 			notes: 			data['notes'],
 			value: 		 	data['value'],
+			sub_value: 		data['sub_value'],
 			unit: 		 	data['unit'],
 			started_at: 	data['started_at'],
 			ended_at: 		data['ended_at'],
 			recorded_at: 	Time.zone.now
 			)
+
 
 		@segment_data = data['segment_results']
 		@segment_data.each do |result|

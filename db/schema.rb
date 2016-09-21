@@ -243,7 +243,9 @@ ActiveRecord::Schema.define(version: 20160822220712) do
     t.string   "observed_type"
     t.string   "title"
     t.float    "value"
-    t.string   "unit"
+    t.float    "sub_value",     default: 0.0
+    t.string   "unit",          default: "secs"
+    t.string   "sub_unit",      default: "reps"
     t.string   "rx"
     t.text     "notes"
     t.datetime "started_at"
