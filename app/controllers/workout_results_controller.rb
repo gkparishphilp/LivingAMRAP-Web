@@ -28,11 +28,13 @@ class WorkoutResultsController < ApplicationController
 		@segment_data.each do |result|
 			next if result['segment_type'] == 'workout'
 			segment = WorkoutSegment.find( result['segment_id'] )
+		
 			observation = Observation.create(
 					parent_id: 		@result.id,
 					observed: 		segment,
 					value: 			result['value'],
 					unit: 			result['unit'],
+					content: 		result['content'],
 					recorded_at: 	result['recorded_at']
 				)
 			#observation.move_to_child_of( @result )
@@ -40,9 +42,14 @@ class WorkoutResultsController < ApplicationController
 
 	end
 
-
 	def index
 		@results = Observation.where( observed_type: 'Workout' ).order( recorded_at: :desc )
+	end
+
+	def show
+		@result = Observation.find_by( id: params[:id] )
+		@result ||= Observation.find_by( tmp_id: params[:id] )
+		@result_segments = Observation.where( parent_id: @result.id )
 	end
 
 end

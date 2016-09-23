@@ -3,8 +3,6 @@ class Observation < ActiveRecord::Base
 
 	#acts_as_nested_set
 
-	attr_accessor :content
-
 	belongs_to 	:observed, polymorphic: true
 
 

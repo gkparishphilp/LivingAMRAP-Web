@@ -242,6 +242,7 @@ ActiveRecord::Schema.define(version: 20160822220712) do
     t.integer  "observed_id"
     t.string   "observed_type"
     t.string   "title"
+    t.string   "content"
     t.float    "value"
     t.float    "sub_value",     default: 0.0
     t.string   "unit",          default: "secs"

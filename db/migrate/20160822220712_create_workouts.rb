@@ -68,6 +68,7 @@ class CreateWorkouts < ActiveRecord::Migration
 			t.integer 		:rgt
 			t.references 	:observed, polymorphic: true
 			t.string 		:title
+			t.string 		:content
 			t.float 		:value 
 			t.float 		:sub_value, default: 0			# for add -on such as rounds (value) & addtnl reps (sub_value)
 			t.string 		:unit, default: 'secs'			# lb, time, reps, etc

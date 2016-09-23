@@ -40,7 +40,6 @@ class WorkoutsController < ApplicationController
 	end
 
 	def index
-		respond_with: 500
 		@workouts = Workout.order( :title )
 		set_page_meta( title: 'Workouts | Living AMRAP' )
 	end
