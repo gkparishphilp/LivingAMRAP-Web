@@ -10,6 +10,7 @@ json.summary do
 	json.notes 			@result.notes
 	json.rx 			@result.rx
 	json.started_at 	@result.started_at.to_s( :short )
+	json.ended_at 		@result.ended_at.to_s( :short )
 	json.url 			workout_result_url(@result, format: :json)
 end
 
