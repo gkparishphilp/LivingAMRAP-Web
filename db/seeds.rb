@@ -283,10 +283,6 @@ dt.workout_movements.create movement: pj, m_rx: '155 lbs'
 # aug25.workout_movements.create movement: ttb
 
 
-
-
-
-
 # daniel = Workout.create title: 'Daniel'
 # daniel.workout_segments.create content: "50 Pullups", segment_type: :ft
 # daniel.workout_segments.create content: "400m Run", segment_type: :ft

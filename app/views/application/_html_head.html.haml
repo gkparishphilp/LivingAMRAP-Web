@@ -27,7 +27,6 @@
 %meta{ property: 'twitter:description', content: @page_meta[:description] }
 %meta{ property: 'twitter:image', content: @page_meta[:image] }
 %meta{ property: 'twitter:image:src', content: @page_meta[:image] }
-%meta{ property: 'user_events', content: swell_media.user_events_path(authenticity_token: form_authenticity_token) }
 
 - if SwellMedia.google_analytics_code
 	%meta{ property: 'ga:client_id', content: session[:ga_client_id] || '' }

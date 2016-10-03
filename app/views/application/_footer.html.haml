@@ -1,33 +1,37 @@
-%br
-%br
-%br
-%br
-%br
-%footer#footer.navbar.navbar-inverse.navbar-fixed-bottom{ role: "navigation" }
-	.container
+#footer.footer-area
+	.footer-top.container
 		.row
-			.pull-left
-				%p.navbar-text
-					= Time.zone.now
-			.pull-right.copyright
-				%p.navbar-text
-					© 
-					= Time.now.year
-					= ENV['APP_NAME']
+			.widget.col-xs-6.col-sm-4
+				%h4.widget-title
+					Information
+				%ul.entries.links
+					%li
+						%a{ href: '/about' }
+							About
+					%li
+						%a{ href: '/blog' }
+							Blog
+					%li
+						%a{ href: '/contacts/new' }
+							Contact
+					%li
+						%a{ href: '/admin' }
+							Admin
 
-					-#%a{ href: 'http://groundswellenterprises.com'  }
-						= image_tag 'groundswell_logo.png', width: 24, valign: :bottom
-						Groundswell Enterprises, LLC
+			.widget.col-xs-6.col-sm-4
 
-					|
-					- if current_user
-						= current_user
-						%a{ href: main_app.dash_index_path }
-							%i.fa.fa-bar-chart-o
-							Dash
-						|
-						= link_to 'Logout', main_app.logout_path
-					- else
-						= link_to 'Admin', main_app.login_path
-
-
+			.widget.col-xs-12.col-sm-4
+				%h4.widget-title
+					Subscribe
+				%form.form-horizontal{ role: :form }
+					.form-group
+						.col-lg-10
+							%input.form-control{ type: :text, placholder: 'Your Email' }
+	.footer-bottom
+		.container.aligncenter
+			%p
+				©
+				= Time.now.year
+				= ENV['APP_NAME']
+				
+				All Rights Reserved

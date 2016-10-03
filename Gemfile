@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'carrierwave_direct'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -38,7 +40,7 @@ gem 'omniauth-twitter'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'swell_media', git: 'git://github.com/playswell/swell_media.git', branch: 'v4'
+gem 'swell_media', path: '../../engines/swell_media'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

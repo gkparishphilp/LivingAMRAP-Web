@@ -1,6 +1,6 @@
 
 SwellMedia.configure do |config|
-	config.log_events = true
+	config.registered_media_types += [ 'Resipe', 'Workout', ]
 	config.app_name = 'Living AMRAP'
 	config.app_description = 'Remarkable Fitness for Regular People'
 	config.app_logo = ''
